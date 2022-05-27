@@ -23,6 +23,7 @@ app.use(express.json());
  */
 
 const getData = require("./controllers/getData");
+const { application } = require("express");
 
 app.get("/", (req, res) => {
   res.send({ message: "Everything is OK!" });
@@ -30,6 +31,10 @@ app.get("/", (req, res) => {
 
 // Información almacenada en la base de datos.
 app.get("/informacion", getData);
+
+// Actualizar información almacenada en la base de datos.
+const putData = require("./controllers/putData");
+app.put("/:id", putData);
 
 /**
  * ######################
